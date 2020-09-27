@@ -13,5 +13,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <stocks-explore-container name="Home"></stocks-explore-container>
+  <h1>Current Stocks</h1>
+  <ng-container *ngFor="let currentStock of currentStocks">
+    <stocks-current-stock [stock]="currentStock"></stocks-current-stock>
+  </ng-container>
+
+  <h1>Prospective Stocks</h1>
+
+  <ng-container *ngFor="let prospectiveStock of prospectiveStocks">
+    <stocks-prospective-stock [stock]="prospectiveStock"></stocks-prospective-stock>
+  </ng-container>
 </ion-content>

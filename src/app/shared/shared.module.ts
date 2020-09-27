@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ExploreContainerComponent } from './explore-container.component';
+import { ExploreContainerComponent } from './explore-container/explore-container.component';
 
 @NgModule({
   imports: [ CommonModule, FormsModule, IonicModule],
   declarations: [ExploreContainerComponent],
   exports: [ExploreContainerComponent]
 })
-export class ExploreContainerComponentModule {}
+export class SharedModule { }

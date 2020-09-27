@@ -1,0 +1,22 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>{{stock.symbol}}</ion-card-subtitle>
+    <ion-card-title>{{stock.name}}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <p><strong>Current:</strong> ${{stock.prices.current}}</p>
+    <p><strong>Buy below:</strong> ${{stock.prices.buy}}</p>
+    <p><strong>Sell above:</strong> ${{stock.prices.sell}}</p>
+    <hr />
+    <h2>History</h2>
+    <p><strong>First bought:</strong> ${{stock.prices.bought.first}}</p>
+    <p><strong>Last bought:</strong> ${{stock.prices.bought.last}}</p>
+    <p><strong>Sold at:</strong> ${{stock.prices.sold.last}}</p>
+    <hr />
+    <h2>Suggestions</h2>
+    <p><strong>Watch daily:</strong> {{stock.suggestions.watch}}</p>
+    <p><strong>Buy:</strong> {{stock.suggestions.sell}}</p>
+    <p><strong>Sell:</strong> {{stock.suggestions.buy}}</p>
+  </ion-card-content>
+</ion-card>

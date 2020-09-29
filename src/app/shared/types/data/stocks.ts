@@ -47,4 +47,50 @@ export const STOCKS: Stock[] = [
       buy: 25.00,
     }
   },
+  {
+    symbol: 'SAM1',
+    name: 'Sample Three',
+    owned: true,
+    suggestions: {
+      watch: true,
+      sell: false,
+      buy: false,
+    },
+    prices: {
+      current: 49.20,
+      sold: {
+        first: 72.39,
+        last: 13.09,
+      },
+      sell: 55.00,
+      bought: {
+        first: 80.13,
+        last: 10.12,
+      },
+      buy: 45.00,
+    }
+  },
+  {
+    symbol: 'SAM4',
+    name: 'Sample Four',
+    owned: true,
+    suggestions: {
+      watch: true,
+      sell: false,
+      buy: false,
+    },
+    prices: {
+      current: 14.32,
+      sold: {
+        first: 16.32,
+        last: 13.23,
+      },
+      sell: 20.00,
+      bought: {
+        first: 31.62,
+        last: 15.26,
+      },
+      buy: 10.00,
+    }
+  },
 ];

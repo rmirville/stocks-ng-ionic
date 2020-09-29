@@ -1,0 +1,29 @@
+<ion-grid *ngIf="isLoaded">
+  <ion-row>
+    <ion-col size="12" size-sm="6">
+        <ion-row>
+          <ion-col size="12">
+            <h1>Current Stocks</h1>
+          </ion-col>
+          <ng-container *ngFor="let currentStock of currentStocks">
+            <ion-col size="12" size-md="6">
+              <stocks-current-stock [stock]="currentStock"></stocks-current-stock>
+            </ion-col>
+          </ng-container>
+        </ion-row>
+    </ion-col>
+
+    <ion-col size="12" size-sm="6">
+        <ion-row>
+          <ion-col size="12">
+            <h1>Prospective Stocks</h1>
+          </ion-col>
+          <ng-container *ngFor="let prospectiveStock of prospectiveStocks">
+            <ion-col size="12" size-md="6">
+              <stocks-prospective-stock [stock]="prospectiveStock"></stocks-prospective-stock>
+            </ion-col>
+          </ng-container>
+        </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>

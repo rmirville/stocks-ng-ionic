@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { LoadingStatusService } from '@app/services/loading-status.service';
-import { Stock } from '@shared/types/stock';
-import { StockConstLoaderService } from '@data/const/services/stock-const-loader.service';
 
 @Component({
   selector: 'stocks-home',
@@ -12,29 +10,13 @@ import { StockConstLoaderService } from '@data/const/services/stock-const-loader
 })
 export class HomePage implements OnInit {
 
-  currentStocks: Stock[];
-  prospectiveStocks: Stock[];
   isLoading: boolean;
   isLoading$: Observable<boolean>;
 
-  constructor(private lss: LoadingStatusService, private scls: StockConstLoaderService) { }
+  constructor(private lss: LoadingStatusService) { }
 
   ngOnInit() {
     console.group('HomePage::ngOnInit()');
-    this.currentStocks = [];
-    this.prospectiveStocks = [];
-    this.scls.loadStocks().subscribe(stocks => {
-      for (const stock of stocks) {
-        console.log(`stock: ${JSON.stringify(stock)}`);
-        console.log
-        if (stock.owned) {
-          this.currentStocks.push(stock);
-        }
-        else {
-          this.prospectiveStocks.push(stock);
-        }
-      }
-    });
     this.isLoading$ = this.lss.createStatus('home');
     
     this.isLoading$.subscribe(status => {

@@ -7,6 +7,7 @@ import { SharedModule } from '@shared/shared.module';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { CurrentStockComponent } from './components/current-stock/current-stock.component';
+import { HomeSummaryComponent } from './components/home-summary/home-summary.component';
 import { ProspectiveStockComponent } from './components/prospective-stock/prospective-stock.component';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ProspectiveStockComponent } from './components/prospective-stock/prospe
   declarations: [
     HomePage,
     CurrentStockComponent,
+    HomeSummaryComponent,
     ProspectiveStockComponent
   ]
 })

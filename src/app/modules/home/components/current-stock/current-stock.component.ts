@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 
+import { LoadingStatusService } from '@app/services/loading-status.service';
 import { Stock } from '@shared/types/stock';
 
 @Component({
@@ -13,9 +14,11 @@ export class CurrentStockComponent implements OnInit, OnChanges {
 
   @Input() stock: Stock;
 
-  constructor() { }
+  constructor(private lss: LoadingStatusService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.lss.stopLoading('current-stock');
+  }
 
   ngOnChanges() {
     console.group('CurrentStockComponent::ngOnChanges()');

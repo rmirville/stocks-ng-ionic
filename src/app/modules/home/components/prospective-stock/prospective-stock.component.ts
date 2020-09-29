@@ -13,6 +13,6 @@ export class ProspectiveStockComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

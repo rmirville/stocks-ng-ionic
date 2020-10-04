@@ -25,7 +25,10 @@
               <ng-container *ngFor="let item of [1,2,3,4] as items">
                 <ion-col size="12" size-md="6">
 
-                  <ng-container *ngFor="let item of [1,2,3] as items">
+                  <p><ion-skeleton-text animated style="width: 20%"></ion-skeleton-text></p>
+                  <h1><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></h1>
+
+                  <ng-container *ngFor="let item of [1,2] as items">
                     <h2><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></h2>
   
                     <p><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></p>

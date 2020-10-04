@@ -9,15 +9,7 @@ export interface Stock {
   };
   prices: {
     current: number;
-    bought: {
-      first: number;
-      last: number;
-    };
     buy: number;
-    sold: {
-      first: number;
-      last: number;
-    };
     sell: number;
   };
 }

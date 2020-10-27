@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>note-details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+
+    <ng-container *ngIf="!isLoading">
+      <stocks-note-comp [note]="note"></stocks-note-comp>
+    </ng-container>
+
+    <ng-container *ngIf="isLoading">
+      <ion-card-header>
+        <ion-card-subtitle><ion-skeleton-text animated style="width: 20%"></ion-skeleton-text></ion-card-subtitle>
+        <ion-card-title><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ng-container *ngFor="let item of [1,2] as items">
+          <h2><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h2>
+          <p><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></p>
+          <p><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></p>
+          <p><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></p>
+        </ng-container>
+      </ion-card-content>
+    </ng-container>
+
+  </ion-card>
+</ion-content>

@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { LoadingStatusService } from '@app/services/loading-status.service';
 
 @Component({
-  selector: 'stocks-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss']
+  selector: 'stocks-notes',
+  templateUrl: 'notes.page.html',
+  styleUrls: ['notes.page.scss']
 })
-export class HomePage implements OnInit {
+export class NotesPage implements OnInit {
 
   isLoading: boolean;
   isLoading$: Observable<boolean>;
@@ -16,8 +16,8 @@ export class HomePage implements OnInit {
   constructor(private lss: LoadingStatusService) { }
 
   ngOnInit() {
-    console.group('HomePage::ngOnInit()');
-    this.isLoading$ = this.lss.createStatus('home');
+    console.group('NotesPage::ngOnInit()');
+    this.isLoading$ = this.lss.createStatus('notes');
     
     this.isLoading$.subscribe(status => {
       setTimeout(() => {
@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
         // console.log(`new loading status: ${status}`);
       }, 0);
     });
-    this.lss.startLoading('home');
+    this.lss.startLoading('notes');
     console.groupEnd();
   }
 

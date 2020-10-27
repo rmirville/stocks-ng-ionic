@@ -1,3 +1,5 @@
+import { Transaction } from './transaction';
+
 export interface StockNote {
   symbol: string;
   name: string;
@@ -9,15 +11,8 @@ export interface StockNote {
   };
   prices: {
     current: number;
-    bought: {
-      first: number;
-      last: number;
-    };
     buy: number;
-    sold: {
-      first: number;
-      last: number;
-    };
     sell: number;
   };
+  history: Transaction[];
 }

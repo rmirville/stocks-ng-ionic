@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { LoadingStatusService } from '@app/services/loading-status.service';
 import { Stock } from '@shared/types/stock';
-import { StockConstLoaderService } from '@shared/services/stock-const-loader.service';
+import { StockNoteConstLoaderService } from '@shared/services/stock-note-const-loader.service';
 
 @Component({
-  selector: 'stocks-home-summary',
-  templateUrl: './home-summary.component.html',
-  styleUrls: ['./home-summary.component.scss'],
+  selector: 'stocks-notes-summary',
+  templateUrl: './notes-summary.component.html',
+  styleUrls: ['./notes-summary.component.scss'],
 })
 export class HomeSummaryComponent implements OnInit {
 
@@ -15,13 +15,13 @@ export class HomeSummaryComponent implements OnInit {
   currentStocks: Stock[];
   prospectiveStocks: Stock[];
 
-  constructor(private lss: LoadingStatusService, private scls: StockConstLoaderService) { }
+  constructor(private lss: LoadingStatusService, private snls: StockNoteConstLoaderService) { }
 
   ngOnInit() {
     this.currentStocks = [];
     this.prospectiveStocks = [];
-    this.scls.loadStocks().subscribe(stocks => {
-      this.lss.stopLoading('home');
+    this.snls.loadNotes().subscribe(stocks => {
+      this.lss.stopLoading('notes');
       this.isLoaded = true;
       for (const stock of stocks) {
         if (stock.owned) {

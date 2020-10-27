@@ -6,7 +6,6 @@
 
   <ion-card-content>
     <h2>Summary</h2>
-    <p><strong>Sell above:</strong> ${{stock.prices.sell}}</p>
     <p><strong>Current:</strong> ${{stock.prices.current}}</p>
     <p><strong>Buy below:</strong> ${{stock.prices.buy}}</p>
     <hr />
@@ -15,6 +14,6 @@
     <p><strong>Buy:</strong> {{stock.suggestions.sell}}</p>
     <p><strong>Sell:</strong> {{stock.suggestions.buy}}</p>
     <hr />
-    <p><a [routerLink]="['/stocks', stock.symbol | lowercase, 'notes']">View notes</a></p>
+    <p><a [routerLink]="['/tabs', 'notes', stock.symbol | lowercase]">View notes</a></p>
   </ion-card-content>
 </ion-card>

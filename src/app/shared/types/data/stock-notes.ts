@@ -1,6 +1,6 @@
-import { Stock } from '@shared/types/stock';
+import { StockNote } from '@shared/types/stock-note';
 
-export const STOCKS: Stock[] = [
+export const NOTES: StockNote[] = [
   {
     symbol: 'SAM1',
     name: 'Sample One',
@@ -14,7 +14,8 @@ export const STOCKS: Stock[] = [
       current: 15.39,
       sell: 20.00,
       buy: 14.00,
-    }
+    },
+    history: []
   },
   {
     symbol: 'SAM2',
@@ -29,7 +30,8 @@ export const STOCKS: Stock[] = [
       current: 30.41,
       sell: null,
       buy: 25.00,
-    }
+    },
+    history: []
   },
   {
     symbol: 'SAM3',
@@ -44,7 +46,8 @@ export const STOCKS: Stock[] = [
       current: 49.20,
       sell: 55.00,
       buy: 45.00,
-    }
+    },
+    history: []
   },
   {
     symbol: 'SAM4',
@@ -59,6 +62,7 @@ export const STOCKS: Stock[] = [
       current: 14.32,
       sell: 20.00,
       buy: 10.00,
-    }
+    },
+    history: []
   },
 ];

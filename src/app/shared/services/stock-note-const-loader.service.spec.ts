@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StockConstLoaderService } from './stock-const-loader.service';
+import { StockNoteConstLoaderService } from './stock-note-const-loader.service';
 
 describe('StockConstLoaderService', () => {
-  let service: StockConstLoaderService;
+  let service: StockNoteConstLoaderService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(StockConstLoaderService);
+    service = TestBed.inject(StockNoteConstLoaderService);
   });
 
   it('should be created', () => {

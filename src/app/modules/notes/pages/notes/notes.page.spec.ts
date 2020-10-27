@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { ExploreContainerComponentModule } from '@shared/explore-container/explore-container.module';
+import { SharedModule } from '@shared/shared.module';
 
-import { HomePage } from './home.page';
+import { NotesPage } from './notes.page';
 
 describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+  let component: NotesPage;
+  let fixture: ComponentFixture<NotesPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomePage],
-      imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
+      declarations: [NotesPage],
+      imports: [IonicModule.forRoot(), SharedModule]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HomePage);
+    fixture = TestBed.createComponent(NotesPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

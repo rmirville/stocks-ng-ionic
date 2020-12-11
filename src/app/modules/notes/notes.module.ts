@@ -6,12 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
 
 import { NotesRoutingModule } from './notes-routing.module';
-
 import { CurrentStockComponent } from './components/current-stock/current-stock.component';
 import { NoteDetailsComponent } from './components/note-details/note-details.component';
 import { HomeSummaryComponent } from './components/notes-summary/notes-summary.component';
 import { ProspectiveStockComponent } from './components/prospective-stock/prospective-stock.component';
-
 import { NotesPage } from './pages/notes/notes.page';
 import { NoteDetailsPage } from './pages/note-details/note-details.page';
 

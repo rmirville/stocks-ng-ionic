@@ -2,7 +2,6 @@ import { Transaction } from './transaction';
 
 export interface StockNote {
   symbol: string;
-  name: string;
   owned: boolean;
   suggestions: {
     watch: boolean;
@@ -10,7 +9,6 @@ export interface StockNote {
     sell: boolean;
   };
   prices: {
-    current: number;
     buy: number;
     sell: number;
   };

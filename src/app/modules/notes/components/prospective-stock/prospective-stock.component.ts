@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Stock } from '@shared/types/stock';
+import { StockNoteSummary } from '../../store/notes.selectors';
 
 @Component({
   selector: 'stocks-prospective-stock',
@@ -9,7 +9,7 @@ import { Stock } from '@shared/types/stock';
 })
 export class ProspectiveStockComponent implements OnInit {
 
-  @Input() stock: Stock;
+  @Input() stock: StockNoteSummary;
 
   constructor() { }
 

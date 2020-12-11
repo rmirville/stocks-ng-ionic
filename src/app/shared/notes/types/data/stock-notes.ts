@@ -1,9 +1,8 @@
-import { StockNote } from '@shared/types/stock-note';
+import { StockNoteMap } from '@shared/notes/types/stock-note-map';
 
-export const NOTES: StockNote[] = [
-  {
+export const NOTES: StockNoteMap = {
+  'SAM1': {
     symbol: 'SAM1',
-    name: 'Sample One',
     owned: true,
     suggestions: {
       watch: true,
@@ -11,15 +10,13 @@ export const NOTES: StockNote[] = [
       buy: false,
     },
     prices: {
-      current: 15.39,
       sell: 20.00,
       buy: 14.00,
     },
     history: []
   },
-  {
+  'SAM2': {
     symbol: 'SAM2',
-    name: 'Sample Two',
     owned: false,
     suggestions: {
       watch: true,
@@ -27,15 +24,13 @@ export const NOTES: StockNote[] = [
       buy: false,
     },
     prices: {
-      current: 30.41,
       sell: null,
       buy: 25.00,
     },
     history: []
   },
-  {
+  'SAM3': {
     symbol: 'SAM3',
-    name: 'Sample Three',
     owned: true,
     suggestions: {
       watch: true,
@@ -43,15 +38,13 @@ export const NOTES: StockNote[] = [
       buy: false,
     },
     prices: {
-      current: 49.20,
       sell: 55.00,
       buy: 45.00,
     },
     history: []
   },
-  {
+  'SAM4': {
     symbol: 'SAM4',
-    name: 'Sample Four',
     owned: true,
     suggestions: {
       watch: true,
@@ -59,10 +52,9 @@ export const NOTES: StockNote[] = [
       buy: false,
     },
     prices: {
-      current: 14.32,
       sell: 20.00,
       buy: 10.00,
     },
     history: []
   },
-];
+};

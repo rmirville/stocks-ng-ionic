@@ -16,7 +16,7 @@ export class NotesPage implements OnInit {
   constructor(private lss: LoadingStatusService) { }
 
   ngOnInit() {
-    console.group('NotesPage::ngOnInit()');
+    // console.group('NotesPage::ngOnInit()');
     this.isLoading$ = this.lss.createStatus('notes');
     
     this.isLoading$.subscribe(status => {
@@ -26,7 +26,7 @@ export class NotesPage implements OnInit {
       }, 0);
     });
     this.lss.startLoading('notes');
-    console.groupEnd();
+    // console.groupEnd();
   }
 
 }

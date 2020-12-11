@@ -3,23 +3,21 @@ import { Observable, of } from 'rxjs';
 
 import { SharedModule } from '@shared/shared.module';
 
-import { StockNote } from '@shared/types/stock-note';
+import { StockNote } from '@shared/notes/types/stock-note';
+import { StockNoteMap } from '@shared/notes/types/stock-note-map';
 
-import { NOTES } from '@shared/types/data/stock-notes';
+import { NOTES } from '@shared/notes/types/data/stock-notes';
 
-@Injectable({
-  providedIn: SharedModule
-})
 export class StockNoteConstLoaderService {
 
-  notes: StockNote[] = NOTES;
+  notes: StockNoteMap = NOTES;
 
   constructor() {
   }
 
-  loadNotes(): Observable<StockNote[]> {
-    console.log(`StockConstLoaderService::loadNotes() - stocks: ${JSON.stringify(this.notes)}`);
-    const notes$: Observable<StockNote[]> = new Observable<StockNote[]>(observer => {
+  loadNotes(): Observable<StockNoteMap> {
+    // console.log(`StockConstLoaderService::loadNotes() - stocks: ${JSON.stringify(this.notes)}`);
+    const notes$: Observable<StockNoteMap> = new Observable<StockNoteMap>(observer => {
       setTimeout(() => {
         observer.next(this.notes);
         observer.complete();
@@ -31,10 +29,10 @@ export class StockNoteConstLoaderService {
   loadNote(symbol: string): Observable<StockNote> {
     const note$: Observable<StockNote> = new Observable<StockNote>(observer => {
       setTimeout(() => {
-        console.log(`symbol: ${JSON.stringify(symbol)}`);
+        // console.log(`symbol: ${JSON.stringify(symbol)}`);
         symbol = symbol.toUpperCase();
-        const note: StockNote = this.notes.find(n => n.symbol == symbol);
-        console.log(`note: ${JSON.stringify(note)}`);
+        const note: StockNote = this.notes[symbol];
+        // console.log(`note: ${JSON.stringify(note)}`);
         observer.next(note);
         observer.complete();
       }, 1500);

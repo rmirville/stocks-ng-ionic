@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 
 import { LoadingStatusService } from '@app/services/loading-status.service';
-import { Stock } from '@shared/types/stock';
+
+import { StockNoteSummary } from '../../store/notes.selectors';
 
 @Component({
   selector: 'stocks-current-stock',
@@ -10,9 +11,9 @@ import { Stock } from '@shared/types/stock';
 })
 export class CurrentStockComponent implements OnInit, OnChanges {
 
-  displayedStock: Stock;
+  displayedStock: StockNoteSummary;
 
-  @Input() stock: Stock;
+  @Input() stock: StockNoteSummary;
 
   constructor(private lss: LoadingStatusService) { }
 
@@ -21,10 +22,10 @@ export class CurrentStockComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.group('CurrentStockComponent::ngOnChanges()');
-    console.log(`stock: ${JSON.stringify(this.stock)}`);
+    // console.group('CurrentStockComponent::ngOnChanges()');
+    // console.log(`stock: ${JSON.stringify(this.stock)}`);
     this.displayedStock = this.stock;
-    console.groupEnd();
+    // console.groupEnd();
   }
 
 }

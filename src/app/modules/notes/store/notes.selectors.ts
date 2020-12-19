@@ -7,6 +7,8 @@ import { Stock } from '@shared/market/types/stock';
 import { StockMap } from '@shared/market/types/stock-map';
 import { Transaction } from '@shared/notes/types/transaction';
 
+import { NotesState } from './notes.reducer';
+
 export interface StockNoteSummary {
   symbol: string;
   name: string;
@@ -23,13 +25,18 @@ export interface StockNoteSummary {
   };
 }
 
+export interface AllStockNoteSummariesState {
+  summaries: StockNoteSummary[];
+  loaded: boolean;
+}
+
 export interface StockNoteDetails extends StockNoteSummary {
   history: Transaction[];
 }
 
 const selectStockNote: SelectorWithProps<AppState, {symbol: string}, StockNote> = (state: AppState, props) => state.notes.stockNotes[props.symbol];
 
-const selectAllStockNotes: Selector<AppState, StockNoteMap> = (state: AppState) => state.notes.stockNotes;
+const selectAllStockNotes: Selector<AppState, NotesState> = (state: AppState) => state.notes;
 
 const selectStock: SelectorWithProps<AppState, {symbol: string}, Stock> = (state: AppState, props) => state.market.stocks[props.symbol];
 
@@ -45,27 +52,32 @@ const selectStocks: SelectorWithProps<AppState, {stocks: string[]}, StockMap> = 
   return selectedStocks;
 };
 
-export const selectAllStockNoteSummaries = createSelector(selectAllStockNotes, selectAllStocks, (notes: StockNoteMap, stocks: StockMap) => {
+export const selectAllStockNoteSummaries = createSelector(selectAllStockNotes, selectAllStocks, (notes: NotesState, stocks: StockMap) => {
   // console.group('NotesSelectors::selectAllStockNoteSummaries()');
   // console.log(`notes: ${JSON.stringify(notes)}`);
   // console.log(`stocks: ${JSON.stringify(stocks)}`);
-  let noteSummaries: StockNoteSummary[] = [];
-  if ((Object.entries(notes).length > 0) && (Object.entries(stocks).length > 0)) {
-    for (const symbol in notes) {
+  const stockNotes: StockNoteMap = notes.stockNotes;
+  let noteSummaries: AllStockNoteSummariesState = {summaries: [], loaded: false};
+  if (!notes.getAllStatus.fetchAttempted) {
+    return noteSummaries;
+  }
+  if ((Object.entries(stockNotes).length > 0) && (Object.entries(stocks).length > 0)) {
+    for (const symbol in stockNotes) {
       if (stocks.hasOwnProperty(symbol)) {
         const noteSummary: StockNoteSummary = {
           symbol: stocks[symbol].symbol,
           name: stocks[symbol].name,
-          owned: notes[symbol].owned,
-          suggestions: {...notes[symbol].suggestions},
+          owned: stockNotes[symbol].owned,
+          suggestions: {...stockNotes[symbol].suggestions},
           prices: {
-            ...notes[symbol].prices,
+            ...stockNotes[symbol].prices,
             current: stocks[symbol].price
           }
         };
-        noteSummaries.push(noteSummary);
+        noteSummaries.summaries.push(noteSummary);
       }
     }
+    noteSummaries.loaded = true;
   }
   // console.groupEnd();
   return noteSummaries;

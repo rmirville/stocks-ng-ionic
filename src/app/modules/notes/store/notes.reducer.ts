@@ -6,6 +6,7 @@ import { StockNoteLoaderActions } from '@shared/notes/store/stock-note-loader.ac
 export interface NotesState {
   stockNotes: StockNoteMap;
   getAllStatus: {
+    fetchAttempted: boolean;
     hasError: boolean;
     error?: Error;
   };
@@ -14,6 +15,7 @@ export interface NotesState {
 const initialState: NotesState = {
   stockNotes: {},
   getAllStatus: {
+    fetchAttempted: false,
     hasError: false
   }
 };
@@ -24,6 +26,7 @@ export const reducer = createReducer<NotesState, Action>(
     // console.group('NotesReducer::StockNoteLoaderActions.getAllSummariesSuccess');
     // console.log(`stockNotes: ${JSON.stringify(stockNotes)}`);
     const getAllStatus = {
+      fetchAttempted: true,
       hasError: false
     };
     const newState: NotesState = { ...state, stockNotes, getAllStatus };
@@ -32,6 +35,7 @@ export const reducer = createReducer<NotesState, Action>(
   }),
   on(StockNoteLoaderActions.getAllSummariesFailure, (state, { error }) => {
     const getAllStatus = {
+      fetchAttempted: true,
       hasError: true,
       error
     };

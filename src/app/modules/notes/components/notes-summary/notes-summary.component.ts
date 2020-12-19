@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { LoadingStatusService } from '@app/services/loading-status.service';
 
-import { StockNoteSummary, selectAllStockNoteSummaries } from '../../store/notes.selectors';
+import { StockNoteSummary, AllStockNoteSummariesState, selectAllStockNoteSummaries } from '../../store/notes.selectors';
 import { NotesSummaryActions } from '../../store/notes-summary.actions';
 
 @Component({
@@ -17,7 +17,7 @@ export class HomeSummaryComponent implements OnInit {
   isLoaded: boolean = false;
   currentStocks: StockNoteSummary[];
   prospectiveStocks: StockNoteSummary[];
-  notes$: Observable<StockNoteSummary[]>;
+  notes$: Observable<AllStockNoteSummariesState>;
 
   constructor(private lss: LoadingStatusService, private store: Store) { }
 
@@ -25,13 +25,16 @@ export class HomeSummaryComponent implements OnInit {
     this.currentStocks = [];
     this.prospectiveStocks = [];
     this.notes$ = this.store.select(selectAllStockNoteSummaries);
-    this.notes$.subscribe(stocks => {
+    this.notes$.subscribe(state => {
       // console.group('NotesSummaryComponent::notes$.subscribe()');
+      if (!state.loaded) {
+        return;
+      }
       this.lss.stopLoading('notes');
       this.isLoaded = true;
       // console.log(`notes: ${JSON.stringify(stocks)}`);
-      if (stocks !== undefined && stocks.hasOwnProperty(length)) {
-        for (const stock of stocks) {
+      if (state.summaries !== undefined && state.summaries.hasOwnProperty(length)) {
+        for (const stock of state.summaries) {
           if (stock.owned) {
             this.currentStocks.push(stock);
           }

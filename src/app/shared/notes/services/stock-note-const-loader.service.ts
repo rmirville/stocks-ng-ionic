@@ -1,7 +1,4 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-
-import { SharedModule } from '@shared/shared.module';
+import { Observable } from 'rxjs';
 
 import { StockNote } from '@shared/notes/types/stock-note';
 import { StockNoteMap } from '@shared/notes/types/stock-note-map';

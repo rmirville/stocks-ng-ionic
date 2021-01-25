@@ -34,6 +34,8 @@ export class HomeSummaryComponent implements OnInit {
       this.isLoaded = true;
       // console.log(`notes: ${JSON.stringify(stocks)}`);
       if (state.summaries !== undefined && state.summaries.hasOwnProperty(length)) {
+        this.currentStocks = [];
+        this.prospectiveStocks = [];
         for (const stock of state.summaries) {
           if (stock.owned) {
             this.currentStocks.push(stock);

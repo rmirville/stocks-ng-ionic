@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { concatMap, tap } from 'rxjs/operators';
+import { concatMap } from 'rxjs/operators';
 
 import { LoadingStatusService } from '@app/services/loading-status.service';
 import { StockNote } from '@shared/notes/types/stock-note';
 import { StockNoteConstLoaderService } from '@shared/notes/services/stock-note-const-loader.service';
 
 import { NoteDetailsActions } from '../../store/note-details.actions';
-import { selectStockNoteDetails } from '../../store/notes.selectors';
+import { OneStockNoteDetailsState, selectStockNoteDetails } from '../../store/notes.selectors';
 
 @Component({
   selector: 'stocks-note-page',
@@ -19,6 +19,7 @@ import { selectStockNoteDetails } from '../../store/notes.selectors';
 export class NoteDetailsPage implements OnInit {
 
   note: StockNote;
+  note$: Observable<OneStockNoteDetailsState>
   isLoading: boolean;
   isLoading$: Observable<boolean>;
 
@@ -32,6 +33,20 @@ export class NoteDetailsPage implements OnInit {
   ngOnInit() {
     const params$: Observable<Params> = this.route.params;
     
+    this.note = {
+      symbol: null,
+      owned: null,
+      suggestions: {
+        watch: null,
+        buy: null,
+        sell: null,
+      },
+      prices: {
+        buy: null,
+        sell: null,
+      },
+      history: null
+    };
     this.isLoading$ = this.lss.createStatus('noteDetails');
     this.isLoading$.subscribe(status => {
       setTimeout(() => {
@@ -47,10 +62,13 @@ export class NoteDetailsPage implements OnInit {
         const props: {symbol: string} = {symbol: params['symbol']};
         return this.store.select(selectStockNoteDetails, props);
       })
-    ).subscribe(note => {
-      // console.log(`note: ${JSON.stringify(note)}`);
+    ).subscribe(state => {
+      // console.log(`note: ${JSON.stringify(state)}`);
+      if(!state.loaded) {
+        return;
+      }
       this.lss.stopLoading('noteDetails');
-      this.note = note;
+      this.note = state.details;
     });
 
     params$.subscribe(params => {

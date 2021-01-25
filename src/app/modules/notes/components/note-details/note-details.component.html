@@ -1,16 +1,16 @@
 <ion-card-header>
-  <ion-card-subtitle>{{note.symbol}}</ion-card-subtitle>
-  <ion-card-title>{{note.name}}</ion-card-title>
+  <ion-card-subtitle>{{note?.symbol}}</ion-card-subtitle>
+  <ion-card-title>{{note?.name}}</ion-card-title>
 </ion-card-header>
 
 <ion-card-content>
   <h2>Summary</h2>
-  <p><strong>Sell above:</strong> ${{note.prices.sell}}</p>
-  <p><strong>Current:</strong> ${{note.prices.current}}</p>
-  <p><strong>Buy below:</strong> ${{note.prices.buy}}</p>
+  <p><strong>Sell above:</strong> ${{note?.prices.sell}}</p>
+  <p><strong>Current:</strong> ${{note?.prices.current}}</p>
+  <p><strong>Buy below:</strong> ${{note?.prices.buy}}</p>
   <hr />
   <h2>Suggestions</h2>
-  <p><strong>Watch daily:</strong> {{note.suggestions.watch}}</p>
-  <p><strong>Buy:</strong> {{note.suggestions.sell}}</p>
-  <p><strong>Sell:</strong> {{note.suggestions.buy}}</p>
+  <p><strong>Watch daily:</strong> {{note?.suggestions.watch}}</p>
+  <p><strong>Buy:</strong> {{note?.suggestions.sell}}</p>
+  <p><strong>Sell:</strong> {{note?.suggestions.buy}}</p>
 </ion-card-content>

@@ -11,12 +11,17 @@ export interface MarketFetchState {
 export interface MarketState {
   stocks: StockMap;
   getAllStatus: MarketFetchState;
+  getMultiStatus: MarketFetchState;
   getOneStatus: MarketFetchState;
 }
 
 const initialState: MarketState = {
   stocks: {},
   getAllStatus: {
+    fetchAttempted: false,
+    hasError: false
+  },
+  getMultiStatus: {
     fetchAttempted: false,
     hasError: false
   },
@@ -43,6 +48,22 @@ export const reducer = createReducer<MarketState, Action>(
       error
     };
     return { ...state, getAllStatus };
+  }),
+  on(StockLoaderActions.getStocksSuccess, (state, { stocks }) => {
+    const getMultiStatus = {
+      fetchAttempted: true,
+      hasError: false
+    };
+    const newState: MarketState = { ...state, stocks, getMultiStatus };
+    return newState;
+  }),
+  on(StockLoaderActions.getStocksFailure, (state, { error }) => {
+    const getMultiStatus = {
+      fetchAttempted: true,
+      hasError: true,
+      error
+    };
+    return { ...state, getMultiStatus };
   }),
   on(StockLoaderActions.getStockSuccess, (state, { stock }) => {
     // console.group('MarketReducer::on(getStockSuccess)');

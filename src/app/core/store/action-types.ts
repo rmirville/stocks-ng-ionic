@@ -21,6 +21,8 @@ export const messages = {
   stockLoaderService: {
     GET_ONE_SUCCESS: `${names.stockLoaderSvc} Stock Fetch Success`,
     GET_ONE_FAILURE: `${names.stockLoaderSvc} Stock Fetch Failure`,
+    GET_MULTI_SUCCESS: `${names.stockLoaderSvc} Stock Fetch Multiple Success`,
+    GET_MULTI_FAILURE: `${names.stockLoaderSvc} Stock Fetch Multiple Failure`,
     GET_ALL_SUCCESS: `${names.stockLoaderSvc} Stock Fetch All Success`,
     GET_ALL_FAILURE: `${names.stockLoaderSvc} Stock Fetch All Failure`
   }

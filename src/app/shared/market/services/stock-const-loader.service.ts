@@ -5,7 +5,9 @@ import { StockMap } from '@shared/market/types/stock-map';
 
 import { STOCKS } from '@shared/market/types/data/stocks';
 
-export class StockConstLoaderService {
+import { StockLoaderService } from './stock-loader.service';
+
+export class StockConstLoaderService implements StockLoaderService {
 
   stocks: StockMap = STOCKS;
 
@@ -17,6 +19,22 @@ export class StockConstLoaderService {
     const stocks$: Observable<StockMap> = new Observable<StockMap>(observer => {
       setTimeout(() => {
         observer.next(this.stocks);
+        observer.complete();
+      }, 1500);
+    });
+    return stocks$;
+  }
+
+  loadStocks(symbols: string[]): Observable<StockMap> {
+    const stocks$: Observable<StockMap> = new Observable<StockMap>(observer => {
+      setTimeout(() => {
+        let stocks: StockMap = {};
+        for (const symbol of symbols) {
+          if (this.stocks.hasOwnProperty(symbol)) {
+            stocks[symbol] = this.stocks[symbol];
+          }
+        }
+        observer.next(stocks);
         observer.complete();
       }, 1500);
     });

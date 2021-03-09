@@ -56,7 +56,7 @@ const selectStock: SelectorWithProps<AppState, {symbol: string}, Stock> = (state
 const selectAllStocks: Selector<AppState, StockMap> = (state: AppState) => state.market.stocks;
 
 const selectStocks: SelectorWithProps<AppState, {stocks: string[]}, StockMap> = (state: AppState, props) => {
-  let selectedStocks: StockMap;
+  let selectedStocks: StockMap = {};
   for (const symbol of props.stocks) {
     if (state.market.stocks.hasOwnProperty(symbol)) {
       selectedStocks[symbol] = state.market.stocks[symbol];
@@ -65,11 +65,12 @@ const selectStocks: SelectorWithProps<AppState, {stocks: string[]}, StockMap> = 
   return selectedStocks;
 };
 
-export const selectAllStockNoteSummaries = createSelector(selectAllStockNotes, selectAllStocks, (notes: NotesState, stocks: StockMap) => {
+export const selectAllStockNoteSummaries: Selector<AppState, AllStockNoteSummariesState> = (state: AppState) => {
   // console.group('NotesSelectors::selectAllStockNoteSummaries()');
-  // console.log(`notes: ${JSON.stringify(notes)}`);
-  // console.log(`stocks: ${JSON.stringify(stocks)}`);
+  const notes: NotesState = selectAllStockNotes(state);
   const stockNotes: StockNoteMap = notes.stockNotes;
+  const stocks: StockMap = selectStocks(state, {stocks: Object.keys(stockNotes)});
+
   let noteSummaries: AllStockNoteSummariesState = {summaries: [], loaded: false};
   
   if (!notes.getAllStatus.fetchAttempted) {
@@ -95,7 +96,7 @@ export const selectAllStockNoteSummaries = createSelector(selectAllStockNotes, s
   }
   // console.groupEnd();
   return noteSummaries;
-});
+}
 
 export const selectStockNoteDetails = createSelector(selectStockNote, selectStock, (note: NoteState, stock: Stock) => {
   // console.group('NotesSelectors::selectStockNoteDetails()');

@@ -6,6 +6,7 @@ import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 import { NotesSummaryActions } from '@modules/notes/store/notes-summary.actions';
 import { NoteDetailsActions } from '@modules/notes/store/note-details.actions';
 import { StockLoaderActions } from '@shared/market/store/stock-loader.actions';
+import { StockNoteLoaderActions } from '@shared/notes/store/stock-note-loader.actions';
 
 import { StockConstLoaderService } from '@shared/market/services/stock-const-loader.service';
 
@@ -21,6 +22,19 @@ export class StockEffects {
           catchError(error => of(StockLoaderActions.getAllStocksFailure({ error })))
         )
       )
+    )
+  );
+
+  getStocks$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(StockNoteLoaderActions.getAllSummariesSuccess),
+      exhaustMap((notes) => {
+        const symbols: string[] = Object.keys(notes.stockNotes);
+        return this.sls.loadStocks(symbols).pipe(
+          map(stocks => StockLoaderActions.getStocksSuccess({ stocks })),
+          catchError(error => of(StockLoaderActions.getStocksFailure({ error })))
+        );
+      })
     )
   );
 

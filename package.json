@@ -5,7 +5,7 @@
   "homepage": "https://raynaldmirville.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ionic serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -26,7 +26,6 @@
     "@ionic/angular": "^5.0.0",
     "@ngrx/effects": "^10.0.1",
     "@ngrx/store": "^10.0.1",
-    "googleapis": "^68.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

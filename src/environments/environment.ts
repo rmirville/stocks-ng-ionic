@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  GOOGLE_CONFIG: {
+    oAuth: {
+      clientId: '162062913473-q1globdsbk0c93bvej3eva19kuch24h7.apps.googleusercontent.com',
+      clientRedirectUri: 'https://server.stocks.koholint.local:6400/auth'
+    }
+  }
 };
 
 /*

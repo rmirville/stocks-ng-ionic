@@ -6,7 +6,7 @@ import { OAuthAbstractService } from './oauth-abstract-service';
 @Injectable({
   providedIn: 'root'
 })
-export class GoogleOauthService implements OAuthAbstractService {
+export class GoogleOAuthService implements OAuthAbstractService {
 
   authEndpoint: string = 'https://accounts.google.com/o/oauth2/v2/auth';
   authReqConfig = {

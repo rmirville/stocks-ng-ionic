@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from '@app/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'notes',
+        canActivate: [AuthGuard],
         loadChildren: () => import('@modules/notes/notes.module').then(m => m.NotesPageModule)
       },
       {

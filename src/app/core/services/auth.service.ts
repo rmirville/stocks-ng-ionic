@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { CoreModule } from '@app/core.module';
 import { GoogleOAuthService } from '@shared/services/google-oauth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: CoreModule
 })
 export class AuthService {
 
@@ -20,7 +21,7 @@ export class AuthService {
   }
 
   getLoginForm(): void {
-    this.oAuth.getLoginUrl().then(url => {
+    this.oAuth.getLoginUrl().subscribe(url => {
       window.location.href = url;
     });
   }

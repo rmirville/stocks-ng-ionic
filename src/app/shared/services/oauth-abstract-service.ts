@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export interface OAuthAbstractService {
-  getLoginUrl: () => Promise<string>;
+  getLoginUrl: () => Observable<string>;
 };

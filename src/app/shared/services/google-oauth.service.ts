@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+
 import { environment } from '@env';
 
 import { OAuthAbstractService } from './oauth-abstract-service';
@@ -23,16 +25,16 @@ export class GoogleOAuthService implements OAuthAbstractService {
     };
   }
 
-  getLoginUrl(): Promise<string> {
+  getLoginUrl(): Observable<string> {
     const scope: string[] = [
       'openid',
       'https://www.googleapis.com/auth/userinfo.profile'
     ];
     const responseType: string = 'token';
-    let loginUrl: string = 'this.authEndpoint?client_id=' + this.authReqConfig.clientId;
+    let loginUrl: string = this.authEndpoint + '?client_id=' + this.authReqConfig.clientId;
     loginUrl += '&redirect_uri=' + this.authReqConfig.redirectUri;
     loginUrl += '&response_type=token';
-    loginUrl += '&scope=$' + scope.join(' ');
-    return new Promise<string>(() => loginUrl);
+    loginUrl += '&scope=' + scope.join(' ');
+    return of(loginUrl);
   }
 }

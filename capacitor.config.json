@@ -3,7 +3,7 @@
   "appName": "stocks",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "www",
+  "webDir": "dist/www",
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "rm-stocks": {
+      "hosting": {
+        "app": [
+          "rm-stocks"
+        ]
+      }
+    }
+  }
+}

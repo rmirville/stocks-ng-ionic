@@ -1,9 +1,12 @@
 export const environment = {
   production: true,
-  GOOGLE_CONFIG: {
-    oAuth: {
-      clientId: '162062913473-q1globdsbk0c93bvej3eva19kuch24h7.apps.googleusercontent.com',
-      clientRedirectUri: 'https://rmirville-stocks.cloudno.de/'
-    }
-  }
+  firebase: {
+    apiKey: "AIzaSyCLyfapGIQ8nVo8sOfMjRTdTAXZ8y7bfO4",
+    authDomain: "rm-stocks.firebaseapp.com",
+    databaseURL: "https://rm-stocks-default-rtdb.firebaseio.com",
+    projectId: "rm-stocks",
+    storageBucket: "rm-stocks.appspot.com",
+    messagingSenderId: "817127672453",
+    appId: "1:817127672453:web:d80ce76e6fc58b895f77ec"
+  },
 };

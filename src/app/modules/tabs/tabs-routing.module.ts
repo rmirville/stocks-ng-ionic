@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
 import { TabsPage } from './tabs.page';
-import { AuthGuard } from '@app/guards/auth.guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
   {
@@ -10,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: 'notes',
-        canActivate: [AuthGuard],
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () => import('@modules/notes/notes.module').then(m => m.NotesPageModule)
       },
       {

@@ -18,7 +18,6 @@ export class LoginPage implements OnInit {
   private login(): void {
     this.auth.login().subscribe((result: boolean) => {
       if (result) {
-        /**/console.log('auth.login -> true');
         this.router.navigate(['tabs', 'notes']);
       }
     });

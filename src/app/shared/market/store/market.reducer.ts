@@ -1,7 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { StockMap } from '@shared/market/types/stock-map';
+import { Stock } from '@shared/market/types';
 import { StockLoaderActions } from '@shared/market/store/stock-loader.actions';
+import { Dictionary } from '@shared/types';
 
 export interface MarketFetchState {
   readonly fetchAttempted: boolean;
@@ -9,7 +10,7 @@ export interface MarketFetchState {
   readonly error?: Error;
 };
 export interface MarketState {
-  stocks: StockMap;
+  stocks: Dictionary<Stock>;
   getAllStatus: MarketFetchState;
   getMultiStatus: MarketFetchState;
   getOneStatus: MarketFetchState;

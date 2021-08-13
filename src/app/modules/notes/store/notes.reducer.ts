@@ -1,7 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { StockNoteMap } from '@shared/notes/types/stock-note-map';
 import { StockNoteLoaderActions } from '@shared/notes/store/stock-note-loader.actions';
+import { StockNote } from '@shared/notes/types';
+import { Dictionary } from '@shared/types';
 
 export interface NotesFetchState {
   readonly fetchAttempted: boolean;
@@ -10,7 +11,7 @@ export interface NotesFetchState {
 };
 
 export interface NotesState {
-  readonly stockNotes: StockNoteMap;
+  readonly stockNotes: Dictionary<StockNote>;
   readonly getAllStatus: NotesFetchState;
   readonly getOneStatus: NotesFetchState;
 }
@@ -54,7 +55,7 @@ export const reducer = createReducer<NotesState, Action>(
       hasError: false
     };
     const symbol: string = stockNote.symbol;
-    const stockNotes: StockNoteMap = { ...state.stockNotes, [symbol]: stockNote };
+    const stockNotes: Dictionary<StockNote> = { ...state.stockNotes, [symbol]: stockNote };
     return { ...state, stockNotes, getOneStatus };
   }),
   on(StockNoteLoaderActions.getNoteDetailsFailure, (state, { error }) => {

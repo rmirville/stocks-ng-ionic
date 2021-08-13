@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
 
 import { LoadingStatusService } from '@app/services/loading-status.service';
-import { StockNote } from '@shared/notes/types/stock-note';
 import { StockNoteConstLoaderService } from '@shared/notes/services/stock-note-const-loader.service';
+import { StockNote } from '@shared/notes/types';
 
 import { NoteDetailsActions } from '../../store/note-details.actions';
 import { OneStockNoteDetailsState, selectStockNoteDetails } from '../../store/notes.selectors';

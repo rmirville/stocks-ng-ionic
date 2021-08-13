@@ -1,6 +1,7 @@
-import { StockNoteMap } from '@shared/notes/types/stock-note-map';
+import { StockNote } from '@shared/notes/types';
+import { Dictionary } from '@shared/types';
 
-export const NOTES: StockNoteMap = {
+export const NOTES: Dictionary<StockNote> = {
   'SAM1': {
     symbol: 'SAM1',
     owned: true,

@@ -1,6 +1,8 @@
-import { StockMap } from '../stock-map';
+import { Dictionary } from '@shared/types';
 
-export const STOCKS: StockMap = {
+import { Stock } from '../stock';
+
+export const STOCKS: Dictionary<Stock> = {
   'SAM1': {
     symbol: 'SAM1',
     name: 'Sample One',

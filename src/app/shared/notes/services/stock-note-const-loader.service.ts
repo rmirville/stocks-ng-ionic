@@ -1,20 +1,19 @@
 import { Observable } from 'rxjs';
 
-import { StockNote } from '@shared/notes/types/stock-note';
-import { StockNoteMap } from '@shared/notes/types/stock-note-map';
-
+import { StockNote } from '@shared/notes/types';
 import { NOTES } from '@shared/notes/types/data/stock-notes';
+import { Dictionary } from '@shared/types';
 
 export class StockNoteConstLoaderService {
 
-  notes: StockNoteMap = NOTES;
+  notes: Dictionary<StockNote> = NOTES;
 
   constructor() {
   }
 
-  loadNotes(): Observable<StockNoteMap> {
+  loadNotes(): Observable<Dictionary<StockNote>> {
     // console.log(`StockConstLoaderService::loadNotes() - stocks: ${JSON.stringify(this.notes)}`);
-    const notes$: Observable<StockNoteMap> = new Observable<StockNoteMap>(observer => {
+    const notes$: Observable<Dictionary<StockNote>> = new Observable<Dictionary<StockNote>>(observer => {
       setTimeout(() => {
         observer.next(this.notes);
         observer.complete();

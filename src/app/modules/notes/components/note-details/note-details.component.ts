@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { StockNote } from '@shared/notes/types/stock-note';
+import { StockNote } from '@shared/notes/types';
 
 @Component({
   selector: 'stocks-note-comp',

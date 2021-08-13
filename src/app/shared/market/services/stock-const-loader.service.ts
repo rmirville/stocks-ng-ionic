@@ -1,22 +1,21 @@
 import { Observable } from 'rxjs';
 
-import { Stock } from '@shared/market/types/stock';
-import { StockMap } from '@shared/market/types/stock-map';
-
 import { STOCKS } from '@shared/market/types/data/stocks';
+import { Stock } from '@shared/market/types';
+import { Dictionary } from '@shared/types';
 
 import { StockLoaderService } from './stock-loader.service';
 
 export class StockConstLoaderService implements StockLoaderService {
 
-  stocks: StockMap = STOCKS;
+  stocks: Dictionary<Stock> = STOCKS;
 
   constructor() {
   }
 
-  loadAllStocks(): Observable<StockMap> {
+  loadAllStocks(): Observable<Dictionary<Stock>> {
     // console.log(`StockConstLoaderService::loadNotes() - stocks: ${JSON.stringify(this.stocks)}`);
-    const stocks$: Observable<StockMap> = new Observable<StockMap>(observer => {
+    const stocks$: Observable<Dictionary<Stock>> = new Observable<Dictionary<Stock>>(observer => {
       setTimeout(() => {
         observer.next(this.stocks);
         observer.complete();
@@ -25,10 +24,10 @@ export class StockConstLoaderService implements StockLoaderService {
     return stocks$;
   }
 
-  loadStocks(symbols: string[]): Observable<StockMap> {
-    const stocks$: Observable<StockMap> = new Observable<StockMap>(observer => {
+  loadStocks(symbols: string[]): Observable<Dictionary<Stock>> {
+    const stocks$: Observable<Dictionary<Stock>> = new Observable<Dictionary<Stock>>(observer => {
       setTimeout(() => {
-        let stocks: StockMap = {};
+        let stocks: Dictionary<Stock> = {};
         for (const symbol of symbols) {
           if (this.stocks.hasOwnProperty(symbol)) {
             stocks[symbol] = this.stocks[symbol];

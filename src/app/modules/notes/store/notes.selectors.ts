@@ -1,11 +1,9 @@
 import { createSelector, Selector, SelectorWithProps } from '@ngrx/store';
 
 import { AppState } from '@app/store';
-import { StockNote } from '@shared/notes/types/stock-note';
-import { StockNoteMap } from '@shared/notes/types/stock-note-map';
-import { Stock } from '@shared/market/types/stock';
-import { StockMap } from '@shared/market/types/stock-map';
-import { Transaction } from '@shared/notes/types/transaction';
+import { Stock } from '@shared/market/types';
+import { StockNote, Transaction } from '@shared/notes/types';
+import { Dictionary } from '@shared/types';
 
 import { NotesState, NotesFetchState } from './notes.reducer';
 
@@ -53,10 +51,10 @@ const selectAllStockNotes: Selector<AppState, NotesState> = (state: AppState) =>
 
 const selectStock: SelectorWithProps<AppState, {symbol: string}, Stock> = (state: AppState, props) => state.market.stocks[props.symbol.toUpperCase()];
 
-const selectAllStocks: Selector<AppState, StockMap> = (state: AppState) => state.market.stocks;
+const selectAllStocks: Selector<AppState, Dictionary<Stock>> = (state: AppState) => state.market.stocks;
 
-const selectStocks: SelectorWithProps<AppState, {stocks: string[]}, StockMap> = (state: AppState, props) => {
-  let selectedStocks: StockMap = {};
+const selectStocks: SelectorWithProps<AppState, {stocks: string[]}, Dictionary<Stock>> = (state: AppState, props) => {
+  let selectedStocks: Dictionary<Stock> = {};
   for (const symbol of props.stocks) {
     if (state.market.stocks.hasOwnProperty(symbol)) {
       selectedStocks[symbol] = state.market.stocks[symbol];
@@ -68,8 +66,8 @@ const selectStocks: SelectorWithProps<AppState, {stocks: string[]}, StockMap> = 
 export const selectAllStockNoteSummaries: Selector<AppState, AllStockNoteSummariesState> = (state: AppState) => {
   // console.group('NotesSelectors::selectAllStockNoteSummaries()');
   const notes: NotesState = selectAllStockNotes(state);
-  const stockNotes: StockNoteMap = notes.stockNotes;
-  const stocks: StockMap = selectStocks(state, {stocks: Object.keys(stockNotes)});
+  const stockNotes: Dictionary<StockNote> = notes.stockNotes;
+  const stocks: Dictionary<Stock> = selectStocks(state, {stocks: Object.keys(stockNotes)});
 
   let noteSummaries: AllStockNoteSummariesState = {summaries: [], loaded: false};
   

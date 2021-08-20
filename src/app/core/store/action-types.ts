@@ -5,7 +5,7 @@ const names = {
   stockLoaderSvc: '[Stock Loader Service]',
 };
 
-export const messages = {
+export const ACTION_TYPES = {
   noteLoaderService: {
     GET_DETAILS_ONE_SUCCESS: `${names.noteLoaderSvc} Stock Note Details Fetch Success`,
     GET_DETAILS_ONE_FAILURE: `${names.noteLoaderSvc} Stock Note Details Fetch Failure`,
@@ -13,10 +13,10 @@ export const messages = {
     GET_SUMMARIES_ALL_FAILURE: `${names.noteLoaderSvc} Stock Notes Summary Fetch Failure`,
   },
   noteDetailsPage: {
-    GET_DETAILS_ONE: `${names.noteDetailsPg} Stock Note Details Request`
+    GET_DETAILS_ONE: `${names.noteDetailsPg} Stock Note Details Request`,
   },
   noteSummaryComponent: {
-    GET_SUMMARIES_ALL: `${names.noteSummaryCmp} Stock Notes Request`
+    GET_SUMMARIES_ALL: `${names.noteSummaryCmp} Stock Notes Request`,
   },
   stockLoaderService: {
     GET_ONE_SUCCESS: `${names.stockLoaderSvc} Stock Fetch Success`,
@@ -24,6 +24,6 @@ export const messages = {
     GET_MULTI_SUCCESS: `${names.stockLoaderSvc} Stock Fetch Multiple Success`,
     GET_MULTI_FAILURE: `${names.stockLoaderSvc} Stock Fetch Multiple Failure`,
     GET_ALL_SUCCESS: `${names.stockLoaderSvc} Stock Fetch All Success`,
-    GET_ALL_FAILURE: `${names.stockLoaderSvc} Stock Fetch All Failure`
+    GET_ALL_FAILURE: `${names.stockLoaderSvc} Stock Fetch All Failure`,
   }
 };

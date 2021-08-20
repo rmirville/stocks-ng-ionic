@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
-import { messages } from '@app/store/action-types';
+import { ACTION_TYPES } from '@app/store';
 
 export namespace NoteDetailsActions {
-  export const getNote = createAction(messages.noteDetailsPage.GET_DETAILS_ONE, props<{symbol: string}>());
+  export const getNote = createAction(ACTION_TYPES.noteDetailsPage.GET_DETAILS_ONE, props<{symbol: string}>());
 }

@@ -1,20 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { Stock } from '@shared/market/types';
 import { StockLoaderActions } from '@shared/market/store/stock-loader.actions';
-import { Dictionary } from '@shared/types';
 
-export interface MarketFetchState {
-  readonly fetchAttempted: boolean;
-  readonly hasError: boolean;
-  readonly error?: Error;
-};
-export interface MarketState {
-  stocks: Dictionary<Stock>;
-  getAllStatus: MarketFetchState;
-  getMultiStatus: MarketFetchState;
-  getOneStatus: MarketFetchState;
-}
+import { MarketState } from './market.state';
 
 const initialState: MarketState = {
   stocks: {},

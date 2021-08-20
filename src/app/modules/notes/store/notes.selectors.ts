@@ -5,7 +5,7 @@ import { Stock } from '@shared/market/types';
 import { StockNote, Transaction } from '@shared/notes/types';
 import { Dictionary } from '@shared/types';
 
-import { NotesState, NotesFetchState } from './notes.reducer';
+import { NotesState, NotesFetchState } from './notes.state';
 
 export interface StockNoteSummary {
   symbol: string;

@@ -4,8 +4,8 @@ import {
 } from '@ngrx/store';
 
 import { environment } from '@env';
-import * as fromNotes from '@modules/notes/store/notes.reducer';
-import * as fromMarket from '@shared/market/store/market.reducer';
+import * as fromNotes from '@modules/notes/store';
+import * as fromMarket from '@shared/market/store';
 
 export interface AppState {
   notes: fromNotes.NotesState;
@@ -18,3 +18,5 @@ export const reducers: ActionReducerMap<AppState> = {
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
+
+export * from './action-types';

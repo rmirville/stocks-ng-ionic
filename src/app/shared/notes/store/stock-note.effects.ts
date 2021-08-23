@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
 
 import { NotesSummaryActions } from '@modules/notes/store/notes-summary.actions';
 import { NoteDetailsActions } from '@modules/notes/store/note-details.actions';
@@ -27,7 +27,7 @@ export class StockNoteEffects {
   getNoteDetails$ = createEffect(() => 
     this.actions$.pipe(
       ofType(NoteDetailsActions.getNote),
-      exhaustMap((props) =>
+      switchMap((props) =>
         this.snls.loadNote(props.symbol).pipe(
           map(stockNote => StockNoteLoaderActions.getNoteDetailsSuccess({ stockNote })),
           catchError(error => of(StockNoteLoaderActions.getNoteDetailsFailure({ error })))

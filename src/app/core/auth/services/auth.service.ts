@@ -2,12 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { CoreModule } from '@app/core.module';
 import { FirebaseOAuthService } from './firebase-oauth.service';
 
-@Injectable({
-  providedIn: CoreModule
-})
+@Injectable()
 export class AuthService {
 
   loggedIn: boolean = false;

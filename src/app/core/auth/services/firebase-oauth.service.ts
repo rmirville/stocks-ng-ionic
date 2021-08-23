@@ -4,17 +4,12 @@ import { Router } from '@angular/router';
 
 import firebase from 'firebase';
 import { Observable, from } from 'rxjs';
-import { switchAll, tap } from 'rxjs/operators';
-
-import { CoreModule } from '@app/core.module';
-import { environment } from '@env';
+import { switchAll } from 'rxjs/operators';
 
 import { OAuthAbstractService } from './oauth-abstract-service';
 import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: CoreModule
-})
+@Injectable()
 export class FirebaseOAuthService implements OAuthAbstractService {
 
   loggedIn: boolean = false;

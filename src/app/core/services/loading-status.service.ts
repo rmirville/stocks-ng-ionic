@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CoreModule } from '@app/core.module';
 
-@Injectable({
-  providedIn: CoreModule
-})
+@Injectable()
 export class LoadingStatusService {
 
   statuses: { [name: string]: Subject<boolean> };

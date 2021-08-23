@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
 
 import { LoadingStatusService } from '@app/services/loading-status.service';
-import { StockNoteConstLoaderService } from '@shared/notes/services/stock-note-const-loader.service';
 import { StockNote } from '@shared/notes/types';
 
 import { NoteDetailsActions } from '../../store/note-details.actions';
@@ -27,7 +26,6 @@ export class NoteDetailsPage implements OnInit {
     private route: ActivatedRoute,
     private lss: LoadingStatusService,
     private store: Store,
-    private snls: StockNoteConstLoaderService
   ) { }
 
   ngOnInit() {

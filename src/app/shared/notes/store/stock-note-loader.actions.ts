@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { ACTION_TYPES } from '@app/store';
+import { ACTION_TYPES } from '@app/store/action-types';
 import { StockNote } from '@shared/notes/types';
 import { Dictionary } from '@shared/types';
 
